@@ -1,14 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import { BaseStyles, ThemeProvider } from "@primer/react";
+import { ThemeProvider } from "@primer/react";
+import { RouterProvider } from "@tanstack/react-router";
+import router from "./Router";
+
+import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <BaseStyles>
-        <App />
-      </BaseStyles>
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>
 );
