@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetcher, Method } from "../utils/fetcher";
 import { useMount } from "./use-mount";
 
@@ -37,12 +37,13 @@ export const useFetch = <TData = unknown>(options: Options) => {
     }
   };
 
-  useMount(() => {
+  useEffect(() => {
     const initialFetch = options.initialFetch ?? true;
     if (initialFetch) {
       fetch();
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options.endPoint, options.payload, options.query]);
 
   return {
     data,

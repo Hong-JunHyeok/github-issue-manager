@@ -1,5 +1,9 @@
-import { IssueList } from "../components/domain/issue-management/issue-list";
+import { IssueListContainer } from "../components/domain/issue-management/issue-list-container";
 
 export const Index = () => {
-  return <IssueList />;
+  return (
+    <>
+      <IssueListContainer />
+    </>
+  );
 };

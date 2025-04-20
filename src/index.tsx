@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "@primer/react";
+import { BaseStyles, ThemeProvider } from "@primer/react";
 import { RouterProvider } from "@tanstack/react-router";
 import setupLocatorUI from "@locator/runtime";
 import router from "./Router";
@@ -14,7 +14,9 @@ if (import.meta.env.NODE_ENV === "development") {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <BaseStyles>
+        <RouterProvider router={router} />
+      </BaseStyles>
     </ThemeProvider>
   </StrictMode>
 );
