@@ -1,9 +1,16 @@
 import { FormControl, Select, Text } from "@primer/react";
-import { useFetch } from "../../hooks/use-fetch";
-import { EndPoint } from "../../constants/end-point";
-import { RepoDto } from "../../types/repo";
+import { useFetch } from "../../../../hooks/use-fetch";
+import { EndPoint } from "../../../../constants/end-point";
+import { RepoDto } from "../../../../types/repo";
+import { useLocalStorage } from "../../../../hooks/use-local-storage";
+import { Storage } from "../../../../constants/storage";
 
 export const SelectRepo = () => {
+  const [selectedRepo, setSelectedRepo] = useLocalStorage(
+    Storage.SELECTED_REPO,
+    ""
+  );
+
   const { data, isLoading, isError } = useFetch<RepoDto[]>({
     endPoint: EndPoint.GET_REPOS(),
     method: "GET",
@@ -12,10 +19,12 @@ export const SelectRepo = () => {
 
   return (
     <FormControl required>
+      <FormControl.Label visuallyHidden />
       <Select
-        size="small"
         placeholder="Choose a repository"
         disabled={isLoading || isError}
+        value={selectedRepo}
+        onChange={(event) => setSelectedRepo(event.target.value)}
       >
         {data?.length ? (
           data.map(({ name, id }) => (
@@ -32,7 +41,7 @@ export const SelectRepo = () => {
 
       <FormControl.Caption>
         <Text fontSize={1} color="fg.subtle">
-          Select the repository
+          select repository to manage
         </Text>
       </FormControl.Caption>
     </FormControl>

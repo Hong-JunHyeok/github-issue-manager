@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetcher, Method } from "../utils/fetcher";
-import { useMount } from "./use-mount";
 
 type Options = {
   endPoint: string;

@@ -1,19 +1,38 @@
-import { LogoGithubIcon } from "@primer/octicons-react";
+import {
+  EyeIcon,
+  LogoGithubIcon,
+  MilestoneIcon,
+  ProjectIcon,
+} from "@primer/octicons-react";
+import { UnderlineNav } from "@primer/react";
 import { PropsWithChildren } from "react";
-import { SelectRepo } from "./select-repo";
 
 export const PageLayoutComponent = ({ children }: PropsWithChildren) => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="w-full border-b border-gray-200 px-6 py-4">
+      <header className="w-full border-b border-gray-200 px-6 ">
         <div className="max-w-7xl mx-auto flex justify-between">
           <div className="flex items-center gap-1 font-bold text-xl cursor-pointer select-none w-fit">
             <LogoGithubIcon size={24} />
             <span className="font-thin text-gray-600">Issue Manager</span>
           </div>
 
-          <SelectRepo />
+          <UnderlineNav aria-label="Menus">
+            <UnderlineNav.Item icon={EyeIcon} href="/">
+              Issue Management
+            </UnderlineNav.Item>
+            <UnderlineNav.Item
+              icon={MilestoneIcon}
+              href="/milestone-management"
+            >
+              Milestone Management
+            </UnderlineNav.Item>
+            <UnderlineNav.Item icon={ProjectIcon}>
+              Projects Management
+            </UnderlineNav.Item>
+            <UnderlineNav.Item href="#">Wiki</UnderlineNav.Item>
+          </UnderlineNav>
         </div>
       </header>
 

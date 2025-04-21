@@ -6,6 +6,7 @@ import setupLocatorUI from "@locator/runtime";
 import router from "./Router";
 
 import "./index.css";
+import "@primer/primitives/dist/css/functional/themes/light.css";
 
 if (import.meta.env.NODE_ENV === "development") {
   setupLocatorUI();

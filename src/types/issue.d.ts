@@ -1,3 +1,5 @@
+import { MileStoneDto } from "./milestone";
+
 interface IssueDto {
   url: string;
   repository_url: string;
@@ -10,12 +12,20 @@ interface IssueDto {
   number: number;
   title: string;
   user: User;
-  labels: AnyType[];
+  labels: {
+    id: number;
+    node_id: string;
+    url: string;
+    name: string;
+    color: string;
+    default: boolean;
+    description: string;
+  }[];
   state: string;
   locked: boolean;
   assignee: AnyType;
   assignees: AnyType[];
-  milestone: AnyType;
+  milestone: MileStoneDto;
   comments: number;
   created_at: string;
   updated_at: string;
